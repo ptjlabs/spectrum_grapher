@@ -76,15 +76,19 @@ with Spectrum_File('scan.txt', 'r') as scan:
 
     for line in lines:
         spectrum = SpectrumParser(line)
-        _scan = spectrum.spectrum_batch_processing()
-        c_f.append(_scan['center_freq'])
-        fre.append(_scan['frequency'])
-        pwr.append(_scan['power'])
-        n_f.append(_scan['noise_floor'])
-        print(spectrum.current_freq)
-        if spectrum.current_freq > float(results.endingf):
+        if spectrum.current_freq <= float(results.endingf):
+            _scan = spectrum.spectrum_batch_processing()
+            #c_f.append(_scan['center_freq'])
+            fre.append(_scan['frequency'])
+            pwr.append(_scan['power'])
+            n_f.append(_scan['noise_floor'])
 
-            break
+print(fre)
+print(pwr)
+print(n_f)
+
+        
+
 
         
 
