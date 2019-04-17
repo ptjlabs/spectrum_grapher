@@ -10,9 +10,9 @@ import requests as r
 
 __author__ = 'Preston Lee Turner Jr'
 
-__db_endpoint__ = 'https://spectrum-graph.firebaseio.com/'
-current_batch_path = 'batch/current'
-history_batch_path = 'batch/batch-collection'
+__db_endpoint__ = '<endpoint>'
+current_batch_path = '<path>'
+history_batch_path = '<path>'
 
 class SpectrumParser:
 
