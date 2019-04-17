@@ -61,31 +61,31 @@ results = parser.parse_args()
 #print(float(results.startingf),float(results.endingf))
 
 
+if __name__ == '__main__':
+    current_directory = os.getcwd()
+    directory_to_scan = os.chdir('/usr/local/share/gnuradio/examples/uhd/')
 
-current_directory = os.getcwd()
-directory_to_scan = os.chdir('/usr/local/share/gnuradio/examples/uhd/')
+    with Spectrum_File('scan.txt', 'r') as scan:
 
-with Spectrum_File('scan.txt', 'r') as scan:
+        lines = scan.readlines()
+        lines = lines[1:]
+        c_f = []
+        fre = []
+        pwr = []
+        n_f = []
 
-    lines = scan.readlines()
-    lines = lines[1:]
-    c_f = []
-    fre = []
-    pwr = []
-    n_f = []
+        for line in lines:
+            spectrum = SpectrumParser(line)
+            if spectrum.current_freq <= float(results.endingf):
+                _scan = spectrum.spectrum_batch_processing()
+                #c_f.append(_scan['center_freq'])
+                fre.append(_scan['frequency'])
+                pwr.append(_scan['power'])
+                n_f.append(_scan['noise_floor'])
 
-    for line in lines:
-        spectrum = SpectrumParser(line)
-        if spectrum.current_freq <= float(results.endingf):
-            _scan = spectrum.spectrum_batch_processing()
-            #c_f.append(_scan['center_freq'])
-            fre.append(_scan['frequency'])
-            pwr.append(_scan['power'])
-            n_f.append(_scan['noise_floor'])
-
-print(fre)
-print(pwr)
-print(n_f)
+    print(fre)
+    print(pwr)
+    print(n_f)
 
         
 
