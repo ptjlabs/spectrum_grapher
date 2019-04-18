@@ -5,14 +5,17 @@ import json
 import argparse
 import time 
 import datetime
+import tkinter
 import requests as r
+import matplotlib.pyplot as plt
 
+# COMMAND --> python spectrum_tools.py --startingf 2.434e9 --endingf 2.438e9
 
 __author__ = 'Preston Lee Turner Jr'
 
 __db_endpoint__ = '<endpoint>'
 current_batch_path = '<path>'
-history_batch_path = '<path>'
+history_batch_path = '<batch/batch-collection>'
 
 class SpectrumParser:
 
@@ -69,10 +72,10 @@ if __name__ == '__main__':
 
         lines = scan.readlines()
         lines = lines[1:]
-        c_f = []
-        fre = []
-        pwr = []
-        n_f = []
+        c_f = list()
+        fre = list()
+        pwr = list()
+        n_f = list()
 
         for line in lines:
             spectrum = SpectrumParser(line)
@@ -82,10 +85,16 @@ if __name__ == '__main__':
                 fre.append(_scan['frequency'])
                 pwr.append(_scan['power'])
                 n_f.append(_scan['noise_floor'])
+    
+    ## Graph
+    plt.plot(fre,pwr)
+    plt.plot(fre,n_f)
+    plt.show()
 
-    print(fre)
-    print(pwr)
-    print(n_f)
+    # print(fre)
+    # print(pwr)
+    # print(n_f)
+
 
         
 
