@@ -19,20 +19,19 @@ history_batch_path = '<batch/batch-collection>'
 
 class SpectrumParser:
 
-
     def __init__(self, scan_str):
         self.scan_str = scan_str.split('#')
-        self.current_freq = 0.0
+        # self.current_freq = 0.0
+
 
     def spectrum_batch_processing(self):
-        spectrum_list = list()
+        # spectrum_list = list()
         time, center_text, center_freq, freq_text, freq, power_text, power, noise_text, noise = self.scan_str
+        del time, center_text, freq_text, power_text, noise_text
         packet = dict(center_freq=float(center_freq),frequency=float(freq),power=float(power),noise_floor=float(noise))
-        self.current_freq = packet['frequency']
+        # self.current_freq = packet['frequency']
         return packet
         
-    def current_frequency(self):
-        return self.current_freq
 
 class Spectrum_File:
 
@@ -77,21 +76,27 @@ if __name__ == '__main__':
         pwr = list()
         n_f = list()
 
+        pass_freq = 0.0
         for line in lines:
-            spectrum = SpectrumParser(line)
-            if spectrum.current_freq <= float(results.endingf):
+                spectrum = SpectrumParser(line)
                 _scan = spectrum.spectrum_batch_processing()
-                #c_f.append(_scan['center_freq'])
-                fre.append(_scan['frequency'])
-                pwr.append(_scan['power'])
-                n_f.append(_scan['noise_floor'])
+
+                if _scan['frequency'] >= pass_freq and _scan['frequency'] <= float(results.endingf):
+                    pass_freq = _scan['frequency']
+                    fre.append(_scan['frequency'])
+                    pwr.append(_scan['power'])
+                    n_f.append(_scan['noise_floor'])
+                    continue
+                elif  _scan['frequency'] >= pass_freq and _scan['frequency'] >= float(results.endingf):
+                    break
+
     
     ## Graph
     plt.plot(fre,pwr)
-    plt.plot(fre,n_f)
+    # plt.plot(fre,n_f)
     plt.show()
 
-    # print(fre)
+    #print(fre)
     # print(pwr)
     # print(n_f)
 
