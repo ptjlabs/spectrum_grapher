@@ -1,10 +1,18 @@
 # Energy Detection Grapher
 
-This application will sense and graph any transmission between a given spectrum domain.
+This application will sense and graph detected energy signatures on the wireless spectrum.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+- USRP b200
+- Intall b200 Drivers
+- Clone repo
+
+Run:
+```
+pip3 install -r requirements.txt
+```
+
 
 ### Prerequisites
 
