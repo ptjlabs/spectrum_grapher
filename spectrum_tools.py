@@ -9,7 +9,6 @@ import tkinter
 import requests as r
 import matplotlib.pyplot as plt
 
-# COMMAND --> python spectrum_tools.py --startingf 2.434e9 --endingf 2.438e9
 
 __author__ = 'Preston Lee Turner Jr'
 
