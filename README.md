@@ -7,6 +7,7 @@ This application will sense and graph detected energy signatures on the wireless
 - Install Drivers for the USRP b200
 - Download and provision Ubuntu 18.04 with GNU Radio
 - Clone Repository
+- Install preferred enviornment
 
 Run:
 ```
