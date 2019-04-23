@@ -4,13 +4,17 @@ This application will sense and graph detected energy signatures on the wireless
 
 ## Getting Started
 
-- USRP b200
-- Intall b200 Drivers
-- Clone repo
+- Install Drivers for the USRP b200
+- Download and provision Ubuntu 18.04 with GNU Radio
+- Clone Repository
 
 Run:
 ```
 pip3 install -r requirements.txt
+```
+Specify Spectrum Domain:
+```
+python3 spectrum_tools.py --startingf 2.434e9 --endingf 2.438e9
 ```
 
 
