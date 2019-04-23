@@ -23,4 +23,4 @@ python3 spectrum_tools.py --startingf 2.434e9 --endingf 2.438e9
 
 ## Acknowledgments
 
-* 
+* Soumaya El Barrak
