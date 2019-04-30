@@ -16,13 +16,17 @@ __db_endpoint__ = '<endpoint>'
 current_batch_path = '<path>'
 history_batch_path = '<batch/batch-collection>'
 
-class SpectrumParser:
 
+# The Spectrum Parser class will allow the user to accept a string produced byt the spectrum sensing program and parse the contents.
+# from there the user will have the variables "center frquency, frequency, power, and noise floor"
+class SpectrumParser:
+    
+    # This constructor will take in the string and parse it by its "#" deliminator
     def __init__(self, scan_str):
         self.scan_str = scan_str.split('#')
         # self.current_freq = 0.0
 
-
+    # This function will return a packet of the variables from the string 
     def spectrum_batch_processing(self):
         # spectrum_list = list()
         time, center_text, center_freq, freq_text, freq, power_text, power, noise_text, noise = self.scan_str
@@ -31,7 +35,8 @@ class SpectrumParser:
         # self.current_freq = packet['frequency']
         return packet
         
-
+# This context mananger will open the target .txt file. Here we use the "__enter__" & "__exit__" structure to open and teardown the .txt after finished.
+# or simply not having to worry about closing the file ourselves.
 class Spectrum_File:
 
     def __init__(self, filename, mode):
@@ -45,6 +50,8 @@ class Spectrum_File:
     def __exit__(self,exc_type,exc_val,traceback):
         self.file.close()
 
+
+# To stream line the process, argparse was used to provide command line functionality to find the start and ending frequency
 parser = argparse.ArgumentParser(description='This CLI will take in the starting and ending frequency to batch the spectrum analysis scan')
 parser.add_argument(
     '-s','--startingf',
