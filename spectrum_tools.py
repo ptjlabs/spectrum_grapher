@@ -58,11 +58,21 @@ parser.add_argument(
     help='enter starting frequency',
     required=True
 )
-
 parser.add_argument(
     '-e', '--endingf',
     help='enter ending frequency',
-    required=True
+)
+parser.add_argument(
+        '-f1' '--file-one',
+    help='pass in text file',
+)
+parser.add_argument(
+        '-f2' '--file-two',
+    help='pass in file two',
+)
+parser.add_argument(
+        '-f3' '--file-two',
+    help='pass in file three'
 )
 results = parser.parse_args()
 
