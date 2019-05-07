@@ -1,4 +1,4 @@
-# Energy Detection Grapher
+# Energy Detection Graph Generator
 
 This application will sense and graph detected energy signatures on the wireless spectrum.
 
