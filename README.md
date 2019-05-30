@@ -4,10 +4,10 @@ This application will sense and graph detected energy signatures on the wireless
 
 ## Getting Started
 
-- Download and provision Ubuntu 18.04 with GNU Radio
+- Download and provision Ubuntu 18.04 with GNU Radio onto your computer
 - Install UHD Driver
 - Clone Repository
-- Install preferred enviornment
+- Install preferred enviornment (pipenv | conda)
 
 Run:
 ```
