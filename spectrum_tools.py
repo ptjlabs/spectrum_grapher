@@ -10,6 +10,7 @@ import requests as r
 import matplotlib.pyplot as plt
 
 
+
 __author__ = 'Preston Lee Turner Jr'
 
 __db_endpoint__ = '<endpoint>'
